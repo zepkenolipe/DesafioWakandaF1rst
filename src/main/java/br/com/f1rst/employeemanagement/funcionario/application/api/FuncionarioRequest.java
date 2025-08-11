@@ -1,7 +1,9 @@
 package br.com.f1rst.employeemanagement.funcionario.application.api;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.Value;
 
+@Value
 public class FuncionarioRequest {
     @NotBlank
     private String nome;

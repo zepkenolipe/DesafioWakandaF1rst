@@ -11,4 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class FuncionarioController implements funcionarioAPI {
     private final FuncionarioService funcionarioService;
 
+    @Override
+    public FuncionarioResponse postFuncionario(FuncionarioRequest funcionarioRequest) {
+        log.info("[inicia] FuncionarioController - postFuncionario");
+        FuncionarioResponse funcionarioCriado = funcionarioService.criaFuncionario(funcionarioRequest);
+        log.info("[finaliza] FuncionarioController - postFuncionario");
+        return funcionarioCriado;
+    }
 }
