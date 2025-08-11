@@ -1,5 +1,6 @@
 package br.com.f1rst.employeemanagement.funcionario.domain;
 
+import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
@@ -21,11 +22,19 @@ public class Funcionario {
     @NotBlank
     private String designacao;
     @NotBlank
-    private double salario;
+    private String salario;
     @NotBlank
     @Column(unique = true)
     private String telefone;
     @NotBlank
     private String endereco;
+
+    public Funcionario(FuncionarioRequest funcionarioRequest) {
+        this.nome = funcionarioRequest.getNome();
+        this.designacao = funcionarioRequest.getDesignacao();
+        this.salario = funcionarioRequest.getSalario();
+        this.telefone = funcionarioRequest.getTelefone();
+        this.endereco = funcionarioRequest.getEndereco();
+    }
 }
 
