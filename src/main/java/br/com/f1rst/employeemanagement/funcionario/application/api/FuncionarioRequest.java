@@ -6,7 +6,7 @@ public class FuncionarioRequest {
     @NotBlank
     private String nome;
     private String designacao;
-    private double salario;
+    private String salario;
     private String telefone;
     private String endereco;
 }

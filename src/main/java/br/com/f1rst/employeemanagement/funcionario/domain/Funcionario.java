@@ -21,7 +21,7 @@ public class Funcionario {
     @NotBlank
     private String designacao;
     @NotBlank
-    private double salario;
+    private String salario;
     @NotBlank
     @Column(unique = true)
     private String telefone;
