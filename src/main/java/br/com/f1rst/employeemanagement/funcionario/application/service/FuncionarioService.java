@@ -13,4 +13,5 @@ public interface FuncionarioService {
 
     List<FuncionarioListResponse> buscaTodosFuncionarios();
 
+    void patchAlteraFuncionario(UUID idFuncionario, FuncionarioAlteracaoRequest funcionarioAlteracaoRequest);
 }
