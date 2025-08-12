@@ -1,5 +1,6 @@
 package br.com.f1rst.employeemanagement.funcionario.application.service;
 
+import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioAlteracaoRequest;
 import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioListResponse;
 import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioRequest;
 import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioResponse;
@@ -10,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -33,5 +35,14 @@ public class FuncionarioApplicationService implements FuncionarioService {
         List<Funcionario> funcionarios = funcionarioRepository.buscaTodosFuncionarios();
         log.info("[finaliza] FuncionarioApplicationService - buscaTodosFuncionarios");
         return FuncionarioListResponse.converte(funcionarios);
+    }
+
+    @Override
+    public void patchAlteraFuncionario(UUID idFuncionario, FuncionarioAlteracaoRequest funcionarioAlteracaoRequest) {
+        log.info("[inicia] FuncionarioApplicationService - patchAlteraFuncionario");
+        Funcionario funcionario = funcionarioRepository.buscaFuncionarioPorId(idFuncionario);
+        funcionario.altera(funcionarioAlteracaoRequest);
+        funcionarioRepository.salva(funcionario);
+        log.info("[finaliza] FuncionarioApplicationService - patchAlteraFuncionario");
     }
 }

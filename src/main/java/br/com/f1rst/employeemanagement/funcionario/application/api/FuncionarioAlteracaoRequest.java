@@ -4,15 +4,13 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Value;
 
 @Value
-public class FuncionarioRequest {
+public class FuncionarioAlteracaoRequest {
     @NotBlank
     private String nome;
-    @NotBlank
     private String designacao;
     @NotBlank
     private String salario;
     @NotBlank
     private String telefone;
-    @NotBlank
     private String endereco;
 }
