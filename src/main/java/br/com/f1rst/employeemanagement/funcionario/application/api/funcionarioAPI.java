@@ -21,4 +21,8 @@ public interface funcionarioAPI {
     @PatchMapping(value = "/{idFuncionario}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void patchAlteraFuncionario(@PathVariable UUID idFuncionario, @Valid @RequestBody FuncionarioAlteracaoRequest funcionarioAlteracaoRequest);
+
+    @DeleteMapping(value = "/{idFuncionario}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaFuncionarioAtravesId(@PathVariable UUID idFuncionario);
 }
