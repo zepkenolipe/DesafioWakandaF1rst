@@ -17,16 +17,14 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "idFuncionario", updatable = false, unique = true, nullable = false)
     private UUID idFuncionario;
+
     @NotBlank
     private String nome;
-    @NotBlank
     private String designacao;
-    @NotBlank
     private String salario;
-    @NotBlank
+
     @Column(unique = true)
     private String telefone;
-    @NotBlank
     private String endereco;
 
     public Funcionario(FuncionarioRequest funcionarioRequest) {
