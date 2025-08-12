@@ -9,6 +9,7 @@ public class FuncionarioRequest {
     private String nome;
     private String designacao;
     private String salario;
+    @NotBlank
     private String telefone;
     private String endereco;
 }

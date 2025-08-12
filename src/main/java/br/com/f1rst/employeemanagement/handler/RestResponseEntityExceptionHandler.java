@@ -31,7 +31,7 @@ public class RestResponseEntityExceptionHandler {
         if (ex.getRootCause() != null && ex.getRootCause().getMessage() != null) {
             String rootMessage = ex.getRootCause().getMessage();
             if (rootMessage.contains("FUNCIONARIO(TELEFONE")) {
-                message = "Telefone já cadastrado para outro cliente.";
+                message = "Telefone já cadastrado para outro funcionário.";
                 description = "O telefone informado já está cadastrado no sistema.";
             }
         }
