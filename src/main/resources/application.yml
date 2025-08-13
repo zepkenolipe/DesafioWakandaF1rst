@@ -10,13 +10,6 @@ springdoc:
     path: /swagger
 
 spring:
-  datasource:
-    url: jdbc:h2:mem:demodb
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-
-    h2:
-      console:
-        enabled: true
-        path: /console
+  data:
+    mongodb:
+      uri: mongodb+srv://sa:153321@cluster0.htbyici.mongodb.net/f1rst?retryWrites=true&w=majority&appName=Cluster0

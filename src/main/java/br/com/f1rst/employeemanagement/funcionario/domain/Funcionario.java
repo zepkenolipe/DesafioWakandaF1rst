@@ -2,33 +2,37 @@ package br.com.f1rst.employeemanagement.funcionario.domain;
 
 import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioAlteracaoRequest;
 import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioRequest;
-import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+
+@Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Entity
+@Document(collection = "funcionarios")
+@ToString
 public class Funcionario {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = "uuid", name = "idFuncionario", updatable = false, unique = true, nullable = false)
     private UUID idFuncionario;
 
     @NotBlank
     private String nome;
+
     private String designacao;
     private String salario;
 
-    @Column(unique = true)
+    @Field("telefone")
     private String telefone;
+
     private String endereco;
 
     public Funcionario(FuncionarioRequest funcionarioRequest) {
+        this.idFuncionario = UUID.randomUUID();
         this.nome = funcionarioRequest.getNome();
         this.designacao = funcionarioRequest.getDesignacao();
         this.salario = funcionarioRequest.getSalario();
@@ -44,4 +48,5 @@ public class Funcionario {
         this.endereco = funcionarioAlteracaoRequest.getEndereco();
     }
 }
+
 

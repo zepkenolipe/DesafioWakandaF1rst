@@ -15,12 +15,12 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class FuncionarioInfraRepository implements FuncionarioRepository {
-    private final FuncionarioSpringDataJPARepository funcionarioSpringDataJPARepository;
+    private final FuncionarioMongoSpringRepository funcionarioMongoSpringRepository;
 
     @Override
     public Funcionario salva(Funcionario funcionario) {
         log.info("[inicia] FuncionarioInfraRepository - salva");
-        funcionarioSpringDataJPARepository.save(funcionario);
+        funcionarioMongoSpringRepository.save(funcionario);
         log.info("[finaliza] FuncionarioInfraRepository - salva");
         return funcionario;
     }
@@ -28,7 +28,7 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
     @Override
     public List<Funcionario> buscaTodosFuncionarios() {
         log.info("[inicia] FuncionarioInfraRepository - buscaTodosFuncionarios");
-        List<Funcionario> todosFuncionarios = funcionarioSpringDataJPARepository.findAll();
+        List<Funcionario> todosFuncionarios = funcionarioMongoSpringRepository.findAll();
         log.info("[finaliza] FuncionarioInfraRepository - buscaTodosFuncionarios");
         return todosFuncionarios;
     }
@@ -36,7 +36,7 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
     @Override
     public Funcionario buscaFuncionarioPorId(UUID idFuncionario) {
         log.info("[inicia] FuncionarioInfraRepository - buscaFuncionarioPorId");
-        Funcionario funcionario = funcionarioSpringDataJPARepository.findByIdFuncionario(idFuncionario)
+        Funcionario funcionario = funcionarioMongoSpringRepository.findByIdFuncionario(idFuncionario)
                 .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Funcionario não encontrado com o ID: " + idFuncionario));
         log.info("[finaliza] FuncionarioInfraRepository - buscaFuncionarioPorId");
         return funcionario;
@@ -45,7 +45,7 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
     @Override
     public void deletaFuncionario(Funcionario funcionario) {
         log.info("[inicia] FuncionarioInfraRepository - deletaFuncionario");
-        funcionarioSpringDataJPARepository.delete(funcionario);
+        funcionarioMongoSpringRepository.delete(funcionario);
         log.info("[finaliza] FuncionarioInfraRepository - deletaFuncionario");
     }
 }
