@@ -2,33 +2,35 @@ package br.com.f1rst.employeemanagement.funcionario.domain;
 
 import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioAlteracaoRequest;
 import br.com.f1rst.employeemanagement.funcionario.application.api.FuncionarioRequest;
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Document(collection = "funcionarios")
 @ToString
+@Document(collection = "funcionarios")
 public class Funcionario {
-
     @Id
     private UUID idFuncionario;
-
     @NotBlank
     private String nome;
-
+    @NotBlank
     private String designacao;
+    @NotBlank
     private String salario;
-
-    @Field("telefone")
+    @NotBlank
+    @Indexed(unique = true)
     private String telefone;
-
+    @NotBlank
     private String endereco;
 
     public Funcionario(FuncionarioRequest funcionarioRequest) {

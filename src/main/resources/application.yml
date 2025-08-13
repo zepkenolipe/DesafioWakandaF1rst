@@ -13,3 +13,4 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://sa:153321@cluster0.htbyici.mongodb.net/f1rst?retryWrites=true&w=majority&appName=Cluster0
+      auto-index-creation: true
